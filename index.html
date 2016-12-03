@@ -20,13 +20,13 @@
       <slot name="title"></slot>
     </h2>
     <div>
-      <slot></slot>
+      <slot name="description"></slot>
     </div>
   </template>
 </dom-module>
 <p2p-test-app>
   <span slot="title">Mr. Darcy</span>
-  <span>Fun at parties.</span>
+  <span slot="description">Fun at parties.</span>
 </p2p-test-app>
 
 <script>
