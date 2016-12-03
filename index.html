@@ -1,0 +1,51 @@
+<!DOCTYPE>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="import" href="bower_components/polymer/polymer.html">
+        <!--<link href="css/style.css" rel="stylesheet">-->
+    </head>
+    <body>
+    qwerty
+
+
+
+
+<dom-module id="p2p-test-app">
+  <template>
+    <h2>
+      <slot name="title"></slot>
+    </h2>
+    <div>
+      <slot></slot>
+    </div>
+  </template>
+</dom-module>
+<p2p-test-app>
+  <span slot="title">Mr. Darcy</span>
+  <span>Fun at parties.</span>
+</p2p-test-app>
+
+<script>
+
+class P2pTestApp extends Polymer.Element {
+  static get is() { return 'p2p-test-app'; }
+  static get config() {
+   return { /* properties, observers meta data */ }
+  }
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    super.connectedCallback();
+  }
+
+}
+
+customElements.define(P2pTestApp.is, P2pTestApp);
+</script>
+    </body>
+</html>

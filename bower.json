@@ -1,0 +1,17 @@
+{
+  "name": "p2p-test-app",
+  "main": "index.html",
+  "version": "0.0.1",
+  "authors": [
+    "Me"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#2.0-preview",
+    "paper-button": "PolymerElements/paper-button#2.0-preview",
+    "app-layout": "PolymerElements/app-layout#2.0-preview"
+  },
+  "resolutions": {
+    "polymer": "2.0-preview",
+    "webcomponentsjs": "v1"
+  }
+}
