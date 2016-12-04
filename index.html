@@ -1,51 +1,77 @@
-<!DOCTYPE>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="import" href="bower_components/polymer/polymer.html">
+        <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+        <link rel="import" href="bower_components/polymer/polymer-element.html">
         <!--<link href="css/style.css" rel="stylesheet">-->
+        <style>
+            html, body{
+                padding: 0;
+                margin: 0;
+            }
+        </style>
     </head>
     <body>
-    qwerty
 
+        <dom-module id="p2p-test-app">
+            <template>
+                <style>
+                    :host{
+                        background: #cecece;
+                        color:#323232;
+                        display:block;
+                        padding: 20px;
+                    }
+                </style>
+                <h1>
+                    <slot name="title"></slot>
+                </h1>
+                <div>
+                    <slot name="description"></slot>
+                </div>
+            </template>
+        </dom-module>
+        <p2p-test-app>
+            <div id="documentPreloader">
+                Page loding...
+            </div>
+            <div slot="title">Polymer 2.0 preview test</div>
+            <div slot="description">Fun at parties.</div>
+        </p2p-test-app>
 
+        <script>
 
+            window.addEventListener("WebComponentsReady", function(){
 
-<dom-module id="p2p-test-app">
-  <template>
-    <h2>
-      <slot name="title"></slot>
-    </h2>
-    <div>
-      <slot name="description"></slot>
-    </div>
-  </template>
-</dom-module>
-<p2p-test-app>
-  <span slot="title">Mr. Darcy</span>
-  <span slot="description">Fun at parties.</span>
-</p2p-test-app>
+                class P2pTestApp extends Polymer.Element {
+                    static get is() { return 'p2p-test-app'; }
+                    static get config() {
+                        return {
 
-<script>
+                        }
+                    }
+                    constructor() {
+                        super();
+                        console.log('created');
+                    }
+                    connectedCallback() {
+                        super.connectedCallback();
+                        console.log('attached');
+                    }
+                    ready() {
+                        super.ready();
+                        console.log('ready');
+                    }
 
-class P2pTestApp extends Polymer.Element {
-  static get is() { return 'p2p-test-app'; }
-  static get config() {
-   return { /* properties, observers meta data */ }
-  }
-  constructor() {
-    super();
-  }
-  connectedCallback() {
-    super.connectedCallback();
-  }
+                }
 
-}
+                customElements.define(P2pTestApp.is, P2pTestApp);
 
-customElements.define(P2pTestApp.is, P2pTestApp);
-</script>
+            });
+
+        </script>
     </body>
 </html>
