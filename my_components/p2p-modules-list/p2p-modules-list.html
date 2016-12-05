@@ -1,0 +1,66 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../my_components/p2p-modules-list/p2p-modules-list.html">
+<dom-module id="p2p-modules-list">
+    <template>
+        <style>
+            :host{
+                /*display:block;*/
+            }
+            
+        </style>
+        <ul class="module-list">
+            <dom-repeat items="[[appModules]]">
+                <template>
+                    <li><a href="[[item.url]]">[[item.title]]</a></li>                       
+                </template>
+            </dom-repeat>
+        </ul>
+    </template>
+
+<script>
+
+    class P2pModulesList extends Polymer.Element {
+        static get is() { return 'p2p-modules-list'; }
+        static get config() {
+            return {
+                properties: {
+                    appModules: {
+                        type: Array,
+                        value: [
+                            {
+                                title: 'Module #1',
+                                url: '/module-1'
+                            },
+                            {
+                                title: 'Module #2',
+                                url: '/module-2'
+                            },
+                            {
+                                title: 'Module #3',
+                                url: '/module-3'
+                            },
+                        ]
+                    }
+                }
+            }
+        }
+        constructor() {
+            super();
+            // console.log('created');
+        }
+        connectedCallback() {
+            super.connectedCallback();
+            // console.log('attached');
+        }
+        ready() {
+            super.ready();
+            // console.log('ready');
+        }
+
+    }
+
+    customElements.define(P2pModulesList.is, P2pModulesList);
+
+
+</script>
+</dom-module>

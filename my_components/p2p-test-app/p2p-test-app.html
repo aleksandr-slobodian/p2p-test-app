@@ -1,5 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-
+<link rel="import" href="../../my_components/p2p-modules-list/p2p-modules-list.html">
 <dom-module id="p2p-test-app">
     <template>
         <style>
@@ -26,65 +26,42 @@
         <div>
             <slot name="description"></slot>
         </div>
-        <ul class="module-list">
-            <dom-repeat items="[[appModules]]">
-                <template>
-                    <li><a href="[[item.url]]">[[item.title]]</a></li>                       
-                </template>
-            </dom-repeat>
-        </ul>
+        <p2p-modules-list></p2p-modules-list>
     </template>
-</dom-module>
+
 <script>
 
-    window.addEventListener("WebComponentsReady", function(){
-
-        class P2pTestApp extends Polymer.Element {
-            static get is() { return 'p2p-test-app'; }
-            static get config() {
-                return {
-                    properties: {
-                        appVersion: {
-                            type: String,
-                            value: '0.0.1'
-                        },
-                        appModules: {
-                            type: Array,
-                            value: [
-                                {
-                                    title: 'Module #1',
-                                    url: '/module-1'
-                                },
-                                {
-                                    title: 'Module #2',
-                                    url: '/module-2'
-                                },
-                                {
-                                    title: 'Module #3',
-                                    url: '/module-3'
-                                },
-                            ]
-                        }
+    class P2pTestApp extends Polymer.Element {
+        static get is() { return 'p2p-test-app'; }
+        static get config() {
+            return {
+                properties: {
+                    appVersion: {
+                        type: String,
+                        value: '0.0.1'
                     }
                 }
             }
-            constructor() {
-                super();
-                console.log('created');
-            }
-            connectedCallback() {
-                super.connectedCallback();
-                console.log('attached');
-            }
-            ready() {
-                super.ready();
-                console.log('ready');
-            }
-
+        }
+        constructor() {
+            super();
+            console.log('created');
+        }
+        connectedCallback() {
+            super.connectedCallback();
+            // console.log('attached');
+        }
+        ready() {
+            super.ready();
+            // console.log('ready');
         }
 
-        customElements.define(P2pTestApp.is, P2pTestApp);
+    }
 
-    });
+    customElements.define(P2pTestApp.is, P2pTestApp);
 
+/*
+window.addEventListener("WebComponentsReady", function(){})
+*/
 </script>
+</dom-module>
