@@ -12,8 +12,22 @@
                 padding: 0;
                 margin: 0;
             }
-            
         </style>
+        <custom-style>
+            <style>
+                html{
+                    --p2p-app-background: #ececec;
+                    --p2p-app-color: #323232;
+                    --p2p-app-host: {
+                        padding: 50px;
+                    };
+                }
+                body{
+                    background: var(--p2p-app-background);
+                }
+                
+            </style>
+        </custom-style>
     </head>
     <body>
 
@@ -21,10 +35,11 @@
             <template>
                 <style>
                     :host{
-                        background: #ececec;
-                        color:#323232;
+                        background: var(--p2p-app-background, #fff);
+                        color: var(--p2p-app-color, #000);
                         display:block;
                         padding: 20px;
+                        @apply --p2p-app-host;
                     }
                     h1 sup{
                         color: dodgerblue;
@@ -33,7 +48,9 @@
                     h1 ::slotted(span){
                         color: brown;
                     }
+                    
                 </style>
+   
                 <h1>
                     <slot name="title"></slot> <sup>(v.[[appVersion]])</sup>
                 </h1>
