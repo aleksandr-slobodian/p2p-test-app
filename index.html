@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-        <link rel="import" href="bower_components/polymer/polymer-element.html">
+        <link rel="import" href="bower_components/polymer/polymer.html">
         <!--<link href="css/style.css" rel="stylesheet">-->
         <style>
             html, body{
@@ -27,18 +27,25 @@
                     }
                 </style>
                 <h1>
-                    <slot name="title"></slot>
+                    <slot name="title"></slot> (v.[[appVersion]])
                 </h1>
                 <div>
                     <slot name="description"></slot>
                 </div>
+                <ul>
+                    <dom-repeat items="[[appModules]]">
+                        <template>
+                            <li><a href="[[item.url]]">[[item.title]]</a></li>                       
+                        </template>
+                    </dom-repeat>
+                </ul>
             </template>
         </dom-module>
         <p2p-test-app>
             <div id="documentPreloader">
                 Page loding...
             </div>
-            <div slot="title">Polymer 2.0 preview test</div>
+            <span slot="title">Polymer 2.0 preview test</span>
             <div slot="description">Fun at parties.</div>
         </p2p-test-app>
 
@@ -50,7 +57,29 @@
                     static get is() { return 'p2p-test-app'; }
                     static get config() {
                         return {
-
+                            properties: {
+                                appVersion: {
+                                    type: String,
+                                    value: '0.0.1'
+                                },
+                                appModules: {
+                                    type: Array,
+                                    value: [
+                                        {
+                                            title: 'Module #1',
+                                            url: '/module-1'
+                                        },
+                                        {
+                                            title: 'Module #2',
+                                            url: '/module-2'
+                                        },
+                                        {
+                                            title: 'Module #3',
+                                            url: '/module-3'
+                                        },
+                                    ]
+                                }
+                            }
                         }
                     }
                     constructor() {
