@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-        <link rel="import" href="bower_components/polymer/polymer.html">
+        <link rel="import" href="my_components/p2p-test-app/p2p-test-app.html">
         <!--<link href="css/style.css" rel="stylesheet">-->
         <style>
             html, body{
@@ -31,101 +31,15 @@
     </head>
     <body>
 
-        <dom-module id="p2p-test-app">
-            <template>
-                <style>
-                    :host{
-                        background: var(--p2p-app-background, #fff);
-                        color: var(--p2p-app-color, #000);
-                        display:block;
-                        padding: 20px;
-                        @apply --p2p-app-host;
-                    }
-                    h1 sup{
-                        color: dodgerblue;
-                        font-size: 12px;
-                    }
-                    h1 ::slotted(span){
-                        color: brown;
-                    }
-                    
-                </style>
-   
-                <h1>
-                    <slot name="title"></slot> <sup>(v.[[appVersion]])</sup>
-                </h1>
-                <div>
-                    <slot name="description"></slot>
-                </div>
-                <ul class="module-list">
-                    <dom-repeat items="[[appModules]]">
-                        <template>
-                            <li><a href="[[item.url]]">[[item.title]]</a></li>                       
-                        </template>
-                    </dom-repeat>
-                </ul>
-            </template>
-        </dom-module>
-        <p2p-test-app>
-            <div id="documentPreloader">
-                Page loding...
-            </div>
-            <span slot="title">Polymer 2.0 preview <span>test</span></span>
-            <p slot="description">Fun at parties.</p>
-        </p2p-test-app>
+        
+    <p2p-test-app>
+        <div id="appPreloader">
+            Page loding...
+        </div>
+        <span slot="title">Polymer 2.0 preview test</span>
+        <p slot="description">Fun at parties.</p>
+    </p2p-test-app>
 
-        <script>
-
-            window.addEventListener("WebComponentsReady", function(){
-
-                class P2pTestApp extends Polymer.Element {
-                    static get is() { return 'p2p-test-app'; }
-                    static get config() {
-                        return {
-                            properties: {
-                                appVersion: {
-                                    type: String,
-                                    value: '0.0.1'
-                                },
-                                appModules: {
-                                    type: Array,
-                                    value: [
-                                        {
-                                            title: 'Module #1',
-                                            url: '/module-1'
-                                        },
-                                        {
-                                            title: 'Module #2',
-                                            url: '/module-2'
-                                        },
-                                        {
-                                            title: 'Module #3',
-                                            url: '/module-3'
-                                        },
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                    constructor() {
-                        super();
-                        console.log('created');
-                    }
-                    connectedCallback() {
-                        super.connectedCallback();
-                        console.log('attached');
-                    }
-                    ready() {
-                        super.ready();
-                        console.log('ready');
-                    }
-
-                }
-
-                customElements.define(P2pTestApp.is, P2pTestApp);
-
-            });
-
-        </script>
+        
     </body>
 </html>
