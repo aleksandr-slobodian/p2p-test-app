@@ -30,8 +30,11 @@
     </template>
 
 <script>
+        
 
     class P2pTestApp extends Polymer.Element {
+
+        
         static get is() { return 'p2p-test-app'; }
         static get config() {
             return {
@@ -45,7 +48,7 @@
         }
         constructor() {
             super();
-            console.log('created');
+            //console.log('created');
         }
         connectedCallback() {
             super.connectedCallback();
@@ -61,7 +64,7 @@
     customElements.define(P2pTestApp.is, P2pTestApp);
 
 /*
-window.addEventListener("WebComponentsReady", function(){})
+window.addEventListener("WebComponentsReady", function(){});
 */
 </script>
 </dom-module>
